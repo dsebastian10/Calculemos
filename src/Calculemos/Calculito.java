@@ -35,6 +35,8 @@ public class Calculito extends javax.swing.JFrame {
         btn_resultado = new javax.swing.JLabel();
         btn_calcular = new javax.swing.JButton();
         btn_restar = new javax.swing.JButton();
+        btn_multiplicar = new javax.swing.JButton();
+        btn_dividir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("calculo");
@@ -68,6 +70,20 @@ public class Calculito extends javax.swing.JFrame {
             }
         });
 
+        btn_multiplicar.setText("*");
+        btn_multiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_multiplicarActionPerformed(evt);
+            }
+        });
+
+        btn_dividir.setText("/");
+        btn_dividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dividirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,32 +94,39 @@ public class Calculito extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(51, 51, 51)
-                                .addComponent(txt_num1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(51, 51, 51))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
+                                        .addGap(75, 75, 75)
                                         .addComponent(jLabel4)
                                         .addGap(34, 34, 34)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_num2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 57, Short.MAX_VALUE)))
+                                    .addComponent(btn_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel2)
+                                .addGap(51, 51, 51)
+                                .addComponent(txt_num1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 19, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_calcular)
-                .addGap(18, 18, 18)
-                .addComponent(btn_restar)
-                .addGap(63, 63, 63))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_calcular)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_restar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_multiplicar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_dividir)))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +146,12 @@ public class Calculito extends javax.swing.JFrame {
                     .addComponent(btn_calcular)
                     .addComponent(btn_restar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(btn_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(btn_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_multiplicar)
+                    .addComponent(btn_dividir))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -146,6 +172,22 @@ public class Calculito extends javax.swing.JFrame {
         v.restar(nume1, nume2);
         btn_resultado.setText(String.valueOf(v.getRespuesta()));
     }//GEN-LAST:event_btn_restarActionPerformed
+
+    private void btn_multiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multiplicarActionPerformed
+        int num1 = Integer.parseInt(txt_num1.getText());
+        int num2 = Integer.parseInt(txt_num2.getText());
+        
+        v.multiplicar(num1, num2);
+        btn_resultado.setText(String.valueOf(v.getRespuesta())); 
+    }//GEN-LAST:event_btn_multiplicarActionPerformed
+
+    private void btn_dividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dividirActionPerformed
+        int num1 = Integer.parseInt( txt_num1.getText());
+        int num2 = Integer.parseInt( txt_num2.getText());
+        
+        v.dividir(num1, num2);
+        btn_resultado.setText(String.valueOf(v.getRespuesta())); 
+    }//GEN-LAST:event_btn_dividirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +226,8 @@ public class Calculito extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_calcular;
+    private javax.swing.JButton btn_dividir;
+    private javax.swing.JButton btn_multiplicar;
     private javax.swing.JButton btn_restar;
     private javax.swing.JLabel btn_resultado;
     private javax.swing.JLabel jLabel1;

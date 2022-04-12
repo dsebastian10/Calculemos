@@ -21,13 +21,25 @@ public class Valor {
     public void sumar(int num1, int num2) {
         this.valor1 = num1;
         this.valor2 = num2;
-         respuesta = valor1 + valor2;
+        respuesta = valor1 + valor2;
     }
-    
-     public void restar(int num1, int num2) {
+
+    public void restar(int num1, int num2) {
         this.valor1 = num1;
         this.valor2 = num2;
-         respuesta = valor1 - valor2;
+        respuesta = valor1 - valor2;
+    }
+
+    public void multiplicar(int num1, int num2) {
+        this.valor1 = num1;
+        this.valor2 = num2;
+        respuesta = valor1 * valor2;
+    }
+
+    public void dividir(int num1, int num2) {
+        this.valor1 = num1;
+        this.valor2 = num2;
+        respuesta = valor1 / valor2;
     }
 
     public int getRespuesta() {
@@ -37,7 +49,6 @@ public class Valor {
     public void setRespuesta(int respuesta) {
         this.respuesta = respuesta;
     }
-    
 
     public int getValor1() {
         return valor1;
